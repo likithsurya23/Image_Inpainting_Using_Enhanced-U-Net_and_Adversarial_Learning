@@ -1,0 +1,475 @@
+.app {
+  min-height: 100vh;
+  background: #ffffff;   /* ← solid background color */
+}
+
+.app-header {
+  background-color: whitesmoke;
+  color: #111;                 /* FIXED */
+  backdrop-filter: blur(10px);
+  padding: 20px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+} 
+
+.header-content h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+
+  background: black;          
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;         /* visible gradient/clipped text */
+}
+
+.header-content p {
+  margin: 0;
+  color: #0f0d0d;
+  font-size: 1.1em;
+}
+
+/* Progress Steps */
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  margin: 30px auto 0;
+  padding: 0 20px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.step.completed .step-number {
+  background: #10b981;
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.step.active .step-number {
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: scale(1.1);
+}
+
+.step.pending .step-number {
+  background: #e5e7eb;
+  color: #2c2e30;
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.step.completed .step-label {
+  color: #10b981;
+}
+
+.step.active .step-label {
+  color: #065ce8;
+}
+
+.step.pending .step-label {
+  color: #313233;
+}
+
+.step-connector {
+  flex: 1;
+  height: 2px;
+  background: #e5e7eb;
+  margin: 0 10px;
+  position: relative;
+  top: -20px;
+}
+
+.step.completed + .step-connector {
+  background: #10b981;
+}
+
+/* App Content */
+.app-content {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 200px);
+}
+
+.main-workspace {
+  flex: 1;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Step Content */
+.step-content {
+  animation: fadeInUp 0.5s ease;
+
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.step-header h2 {
+  margin: 0 0 12px 0;
+  font-size: 2em;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.step-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 1.1em;
+}
+
+/* Upload Step */
+.upload-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.step-guidance {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.step-guidance h4 {
+  margin: 0 0 16px 0;
+  color: #1f2937;
+}
+
+.step-guidance ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.step-guidance li {
+  margin-bottom: 8px;
+}
+
+/* Mask Step */
+.mask-step {            /* Full viewport height */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;    /* If you want content stacked */
+  justify-content: center;   /* Center vertically */
+  align-items: center;       /* Center horizontally */
+  overflow: hidden;          /* Prevent any scrolling */
+  background: #ffffff;       /* Set background (optional) */
+}
+
+.mask-instructions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.canvas-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  justify-content: center; 
+  align-items: center;
+  object-fit: contain;  
+  display: grid;
+}
+
+.instruction-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.instruction-item:hover {
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.instruction-icon {
+  font-size: 24px;
+}
+
+.instruction-item div {
+  font-size: 14px;
+  color: #374151;
+}
+
+/* Config Step */
+.config-section {
+  display: grid;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.preview-section {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.preview-section h4 {
+  margin: 0 0 20px 0;
+  color: #1f2937;
+  font-size: 18px;
+}
+
+.preview-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.preview-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.preview-item img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #e5e7eb;
+}
+
+.mask-preview {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #e5e7eb;
+}
+
+.mask-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  opacity: 0.7;
+}
+
+.preview-item span {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.preview-arrow {
+  font-size: 24px;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+/* Step Actions */
+.step-actions {
+  display: flex;
+  flex-direction: column;   /* stack vertically */
+  align-items: center;       /* center horizontally */
+  gap: 12px;                 /* space between buttons */
+  width: 100%;
+  margin-top: 20px;
+}
+
+.action-button {
+  width: 100%;               /* full width OR adjust as per your design */
+  max-width: 300px;          /* optional: limit button width */
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.action-button.primary {
+  background: #3b82f6;
+  border: 1px solid #3b82f6;
+  color: #fff;
+}
+
+.action-button.primary:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.action-button.primary.large {
+  padding: 16px 32px;
+  font-size: 16px;
+}
+
+.action-button.secondary {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+}
+
+.action-button.secondary:hover:not(:disabled) {
+  border-color: #3b82f6;
+  color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+.action-button.tertiary {
+  background: transparent;
+  color: #6b7280;
+  border: 1px solid transparent;
+}
+
+.action-button.tertiary:hover:not(:disabled) {
+  background: #f9fafb;
+  color: #374151;
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Result Actions */
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .app-content {
+    flex-direction: column;
+  }
+  
+  .main-workspace {
+    margin: 10px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content h1 {
+    font-size: 2em;
+  }
+  
+  .progress-steps {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .step-connector {
+    display: none;
+  }
+  
+  .preview-images {
+    flex-direction: column;
+  }
+  
+  .preview-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .step-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .action-button {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-workspace {
+    margin: 5px;
+    padding: 15px;
+  }
+  
+  .step-header h2 {
+    font-size: 1.5em;
+  }
+  
+  .mask-instructions {
+    grid-template-columns: 1fr;
+  }
+}

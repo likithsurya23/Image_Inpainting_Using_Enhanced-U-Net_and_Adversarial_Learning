@@ -1,0 +1,267 @@
+.image-uploader {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.upload-area {
+  position: relative;
+  border: 2px dashed #ccc;
+  border-radius: 16px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafafa;
+  overflow: hidden;
+}
+
+.upload-area:hover {
+  border-color: #007acc;
+  background: #f0f8ff;
+}
+
+.upload-area.drag-active {
+  border-color: #007acc;
+  background: #e6f3ff;
+  transform: scale(1.02);
+}
+
+.upload-area.has-preview {
+  padding: 0;
+  border: 2px solid #e1e5e9;
+}
+
+.upload-area.loading {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.upload-area.loading:hover {
+  border-color: #ccc;
+  background: #fafafa;
+  transform: none;
+}
+
+/* Upload Content */
+.upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.upload-icon {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.upload-text h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.upload-text p {
+  margin: 0 0 8px 0;
+  color: #666;
+  font-size: 16px;
+}
+
+.upload-text small {
+  color: #999;
+  font-size: 14px;
+}
+
+.upload-button {
+  background: #007acc;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.upload-button:hover {
+  background: #005a9e;
+  transform: translateY(-1px);
+}
+
+/* Preview Styles */
+.preview-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #f8f9fa;
+}
+
+.preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.preview-container:hover .preview-overlay {
+  opacity: 1;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.preview-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.replace-btn {
+  background: #007acc;
+  color: white;
+}
+
+.replace-btn:hover {
+  background: #005a9e;
+  transform: translateY(-1px);
+}
+
+.remove-btn {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.remove-btn:hover {
+  background: white;
+  transform: translateY(-1px);
+}
+
+/* Drag Overlay */
+.drag-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 122, 204, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+}
+
+.drag-content {
+  color: white;
+  text-align: center;
+}
+
+.drag-content p {
+  margin: 16px 0 0 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Loading State */
+.upload-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: #666;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #007acc;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.upload-loading p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .image-uploader {
+    max-width: 100%;
+  }
+  
+  .upload-area {
+    padding: 30px 15px;
+  }
+  
+  .upload-text h3 {
+    font-size: 18px;
+  }
+  
+  .upload-text p {
+    font-size: 14px;
+  }
+  
+  .preview-container {
+    height: 250px;
+  }
+  
+  .preview-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .preview-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-area {
+    padding: 20px 10px;
+  }
+  
+  .upload-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .preview-container {
+    height: 200px;
+  }
+}
